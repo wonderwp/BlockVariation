@@ -2,7 +2,7 @@
 
 namespace WonderWp\Component\BlockVariations\Service;
 
-use WonderWp\Component\BlockVariations\BlockVariationInterface;
+use WonderWp\Component\BlockVariations\Definition\BlockVariationInterface;
 
 interface BlockVariationServiceInterface
 {

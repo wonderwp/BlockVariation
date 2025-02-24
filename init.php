@@ -37,10 +37,10 @@ function wwp_register_blockvariation_service_towards_manager(ManagerInterface $m
                 if ($blockVariationService instanceof ManagerAwareInterface) {
                     $blockVariationService->setManager($manager);
                 }
-                $blockVariationService->registerBlockVariations();
+                $blockVariationService->register();
             }
         } else {
             throw $e;
         }
     }
-} 
+}

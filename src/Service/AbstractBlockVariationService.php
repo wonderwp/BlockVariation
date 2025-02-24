@@ -3,8 +3,9 @@
 namespace WonderWp\Component\BlockVariations\Service;
 
 use WonderWp\Component\BlockVariations\Definition\BlockVariationInterface;
+use WonderWp\Component\Service\AbstractService;
 
-abstract class AbstractBlockVariationService implements BlockVariationServiceInterface
+abstract class AbstractBlockVariationService extends AbstractService  implements BlockVariationServiceInterface
 {
     /** @var BlockVariationInterface[] */
     protected array $blockVariations = [];
@@ -48,26 +49,4 @@ abstract class AbstractBlockVariationService implements BlockVariationServiceInt
             }, 10, 2);
         }
     }
-
-    protected function autoloadFile(string $className, string $filePath): object
-    {
-        $instance = new $className();
-        $this->addBlockVariation($instance);
-        return $instance;
-    }
-
-    public function autoload(array $classNameFromFiles = [], array $discoveryPaths = [], callable $successCallback = null, array $excludedClasses = []): array
-    {
-        $autoLoaded = [];
-        foreach ($classNameFromFiles as $className => $filePath) {
-            if (!in_array($className, $excludedClasses)) {
-                $instance = $this->autoloadFile($className, $filePath);
-                $autoLoaded[] = $instance;
-                if ($successCallback !== null) {
-                    $successCallback($instance);
-                }
-            }
-        }
-        return $autoLoaded;
-    }
-} 
+}

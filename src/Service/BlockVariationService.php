@@ -39,4 +39,4 @@ class BlockVariationService extends AbstractBlockVariationService
         $this->addBlockVariation($instance);
         return $instance;
     }
-} 
+}
