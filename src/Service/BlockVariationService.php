@@ -2,6 +2,7 @@
 
 namespace WonderWp\Component\BlockVariations\Service;
 
+use WonderWp\Component\BlockVariations\Definition\BlockVariationInterface;
 use WonderWp\Component\PluginSkeleton\ManagerAwareTrait;
 
 class BlockVariationService extends AbstractBlockVariationService
@@ -36,7 +37,7 @@ class BlockVariationService extends AbstractBlockVariationService
     protected function autoloadFile(string $className, string $filePath): object
     {
         $instance = parent::autoloadFile($className, $filePath);
-        
+
         if($instance instanceof BlockVariationInterface) {
             $this->addBlockVariation($instance);
         }
