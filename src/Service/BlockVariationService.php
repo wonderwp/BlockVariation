@@ -36,7 +36,11 @@ class BlockVariationService extends AbstractBlockVariationService
     protected function autoloadFile(string $className, string $filePath): object
     {
         $instance = parent::autoloadFile($className, $filePath);
-        $this->addBlockVariation($instance);
+        
+        if($instance instanceof BlockVariationInterface) {
+            $this->addBlockVariation($instance);
+        }
+
         return $instance;
     }
 }
