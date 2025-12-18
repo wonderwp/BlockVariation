@@ -4,9 +4,15 @@ namespace WonderWp\Component\BlockVariations\Service;
 
 use WonderWp\Component\BlockVariations\Definition\BlockVariationInterface;
 use WonderWp\Component\Service\AbstractService;
+use WonderWp\Component\Service\Traits\HasAutoloadingCapabilities;
+use WonderWp\Component\BlockVariations\Traits\HasBlockVariationAutoloader;
 
 abstract class AbstractBlockVariationService extends AbstractService  implements BlockVariationServiceInterface
 {
+    use HasAutoloadingCapabilities, HasBlockVariationAutoloader {
+        HasBlockVariationAutoloader::resolveDiscoveryPaths insteadof HasAutoloadingCapabilities;
+        HasBlockVariationAutoloader::afterAutoload insteadof HasAutoloadingCapabilities;
+    }
     /** @var BlockVariationInterface[] */
     protected array $blockVariations = [];
 
